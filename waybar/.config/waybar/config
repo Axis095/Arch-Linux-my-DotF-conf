@@ -1,0 +1,72 @@
+// Archivo: ~/.config/waybar/config.jsonc
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 5,
+    
+    // === Módulos ===
+    "modules-left": [
+	    "custom/arch-logo",
+        "hyprland/workspaces"
+    ],
+
+    "modules-center": [
+        "clock"
+    ],
+
+    "modules-right": [
+        "pulseaudio",
+        "tray",
+        "cpu",
+        "memory",
+        "custom/wallpaper"
+    ],
+    
+    // === Configuración de Módulos ===
+    "clock": {
+        "format": "⏰ {:%H:%M:%S}",
+        "interval": 1,
+        "tooltip-format": "<big>{:%Y %B %d}</big>"
+    },
+
+    "cpu": {
+        "format": "  {usage}%",
+        "tooltip": true,
+        "interval": 10
+    },
+
+    "memory": {
+        "format": "  {percentage}%",
+        "format-alt": "RAM {used}/{total} GiB",
+        "interval": 5,
+        "tooltip": true
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "  ",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+
+    "custom/wallpaper": {
+        "format": "󰸉",
+        "on-click": "bash $HOME/.config/waybar/scripts/wall-selector.sh", // Agregado 'bash' por seguridad
+        "tooltip": true,
+        "tooltip-format": "Cambiar fondo de pantalla"
+    },
+
+    "custom/arch-logo": {
+        "format": "    ", // Icono de Arch
+        "tooltip": false,
+        "on-click": "rofi -show drun" // que abra el menú al hacer clic
+    }
+}

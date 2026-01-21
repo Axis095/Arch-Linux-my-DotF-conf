@@ -1,0 +1,98 @@
+configuration {
+    /* Habilitamos los modos básicos y el buscador de archivos */
+    modes: "drun,run,filebrowser,window";
+    
+    /* ESTO ES LO MÁS IMPORTANTE PARA LAS MINIATURAS */
+    show-icons: true;
+    icon-theme: "Papirus"; // O el tema que tengas instalado
+    
+    /* Ajustes de visualización para Wayland */
+    terminal: "kitty"; // Cambia por tu terminal (alacritty, foot, etc)
+    drun-display-format: "{name}";
+    window-format: "{w} · {c} · {t}";
+    
+    /* Desactivar el historial si quieres que siempre aparezca limpio */
+    disable-history: false;
+    
+    timeout {
+        action: "kb-cancel";
+        delay:  0;
+    }
+}
+
+@theme "/dev/null"
+
+* {
+    bg:      #14141e66; 
+    accent:  #00FFFF;
+    purple:  #7A00FF;
+    fg:      #FFFFFF;
+    
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+window {
+    width:            50%; /* Un poco más ancho para que luzcan las miniaturas */
+    background-color: @bg;
+    border:           2px;
+    border-color:     @purple;
+    border-radius:    12px;
+    location:         center;
+    anchor:           center;
+    padding:          20px;
+}
+
+mainbox {
+    children: [ inputbar, listview ];
+}
+
+inputbar {
+    children:         [ prompt, entry ];
+    background-color: #ffffff1a;
+    border-radius:    8px;
+    padding:          10px;
+    margin:           0 0 15px 0;
+}
+
+prompt {
+    text-color:       @accent;
+    margin:           0 10px 0 0;
+}
+
+entry {
+    placeholder:       "Buscar...";
+    placeholder-color: #888888;
+}
+
+listview {
+    lines:        6;
+    columns:      1;
+    fixed-height: false;
+    scrollbar:    false;
+    spacing:      10px; /* Más espacio entre elementos */
+}
+
+element {
+    padding:       10px;
+    border-radius: 8px;
+    orientation:   horizontal; /* Asegura que el icono y texto estén alineados */
+}
+
+element-icon {
+    size: 128px; /* TAMAÑO DE LA MINIATURA: Ajusta a tu gusto (ej. 64px o 128px) */
+    cursor: inherit;
+}
+
+element-text {
+    vertical-align: 0.5;
+    horizontal-align: 0.0;
+    cursor: inherit;
+}
+
+element selected {
+    background-color: #00ffff4d;
+    text-color:       @accent;
+    border:           1px;
+    border-color:     @accent;
+}
