@@ -1,0 +1,3 @@
+# Ignorar logs de OpenTabletDriver
+otd/.config/OpenTabletDriver/Logs/*.json
+otd/.config/OpenTabletDriver/Logs/
