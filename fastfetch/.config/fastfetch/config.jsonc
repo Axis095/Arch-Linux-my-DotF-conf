@@ -1,0 +1,103 @@
+{
+  "$schema": "https://github.com",
+  "logo": {
+    "type": "kitty",
+    "source": "$(find /home/AxisKnight/Pictures/images-terminal/ -type f | shuf -n 1)",
+    "width": 33,
+    "height": 15,
+    "padding": {
+      "top": 1
+    }
+  },
+
+  "display": {
+    // Separador general entre key y value
+    "separator": " 󰘧 "
+  },
+
+  "modules": [
+    "title",
+
+    // ──────── HEADER DECORATIVO ────────
+    {
+      "type": "custom",
+      "format": "󰘧━━━━━━━━━━━━━━━━━━━━━━━ SYSTEM ━━━━━━━━━━━━━━━━━━━━━━━󰘧",
+      "color": "38;2;137;180;250"
+    },
+
+    {
+      "type": "os",
+      "key": "OS 󰣇 ",
+      "keyColor": "blue"
+    },
+    {
+      "type": "kernel",
+      "key": "KER ",
+      "keyColor": "blue"
+    },
+    {
+      "type": "wm",
+      "key": "WM  ",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "shell",
+      "key": "SH  ",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "terminal",
+      "key": "TER ",
+      "keyColor": "magenta"
+    },
+
+    "break",
+
+    // ──────── HARDWARE ────────
+    {
+      "type": "custom",
+      "format": "󰘧━━━━━━━━━━━━━━━━━━━━━━ HARDWARE ━━━━━━━━━━━━━━━━━━━━━━󰘧",
+      "color": "38;2;249;226;175"
+    },
+
+    {
+      "type": "cpu",
+      "key": "CPU 󰻠",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "gpu",
+      "key": "GPU  ",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "memory",
+      "key": "MEM  ",
+      "keyColor": "green"
+    },
+    {
+      "type": "disk",
+      "key": "DISK ",
+      "keyColor": "green"
+    },
+
+    "break",
+
+    // ──────── MEDIA ────────
+    {
+      "type": "custom",
+      "format": "󰘧━━━━━━━━━━━━━━━━━━━━━━━ MEDIA ━━━━━━━━━━━━━━━━━━━━━━━━󰘧",
+      "color": "38;2;148;226;213"
+    },
+
+    {
+      "type": "media",
+      "key": "SONG ",
+      "keyColor": "38;2;0;255;255"
+    },
+
+    "break"
+
+    // "colors"
+  ]
+}

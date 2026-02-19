@@ -1,0 +1,7 @@
+/* Generamos el color ya con el canal alfa (transparencia) incluido */
+@define-color primary {{colors.primary.default.hex}};
+@define-color surface {{colors.surface.default.hex}};
+@define-color on_surface {{colors.on_surface.default.hex}};
+@define-color accent {{colors.primary.default.hex}};
+/* Esta es la que tú querías usar: */
+@define-color waybar_bg {{colors.surface.default.rgba | set_alpha: 0.7}};
