@@ -133,16 +133,25 @@
             "Enable": true
           },
           {
-            "Path": "OpenTabletDriver.Desktop.Binding.KeyBinding",
+            "Path": "OpenTabletDriver.Desktop.Binding.MultiKeyBinding",
             "Settings": [
               {
-                "Property": "Key",
-                "Value": "Space"
+                "Property": "Keys",
+                "Value": "Control+Equal"
               }
             ],
             "Enable": true
           },
-          null,
+          {
+            "Path": "OpenTabletDriver.Desktop.Binding.MultiKeyBinding",
+            "Settings": [
+              {
+                "Property": "Keys",
+                "Value": "Control+Minus"
+              }
+            ],
+            "Enable": true
+          },
           {
             "Path": "OpenTabletDriver.Desktop.Binding.KeyBinding",
             "Settings": [

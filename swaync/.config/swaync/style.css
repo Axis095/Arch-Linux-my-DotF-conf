@@ -1,0 +1,106 @@
+@import "../../.cache/matugen/colors.css";
+
+* {
+  font-family: "JetBrainsMono Nerd Font","Roboto", sans-serif;
+  font-weight: 500;
+}
+
+.control-center {
+  background: rgba(30, 30, 46, 0.9);
+  border-radius: 15px;
+  border: 2px solid @accent;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  margin: 10px;
+  padding: 10px;
+}
+
+.notification {
+  background: rgba(30, 30, 30, 0.5);
+  border-radius: 10px;
+  margin: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.notification-content {
+  color: #cdd6f4;
+}
+
+.notification-title {
+  color: #89b4fa;
+  font-size: 1.2rem;
+}
+
+.widget-mpris {
+    background: rgba(20, 20, 25, 0.6);
+    padding: 20px;
+    margin: 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.widget-mpris-album-art {
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    margin-right: 15px;
+}
+
+.widget-mpris-player > box > button {
+    background: transparent;
+    border: none;
+    font-size: 22px;
+    color: @accent;
+    transition: transform 0.2s ease;
+}
+
+.widget-mpris-player > box > button:hover {
+    transform: scale(1.2);
+    color: white;
+}
+
+.widget-volume, .widget-backlight {
+    background: rgba(30, 30, 30, 0.5);
+    padding: 10px;
+    margin: 5px 10px;
+    border-radius: 15px;
+    color: @accent;
+}
+
+trough highlight {
+    background: @accent;
+}
+
+
+.widget-buttons-grid {
+    background: rgba(15, 15, 20, 0.75);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+.widget-buttons-grid > box > button {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+.widget-buttons-grid > box > button:hover {
+  background: @accent;
+  box-shadow: 0 0 15px @accent;
+}
+
+.widget-title, .widget-buttons-grid, .widget-volume, .widget-mpris {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.widget-volume trough {
+    min-height: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.widget-volume highlight {
+    background: @accent;
+    border-radius: 10px;
+}

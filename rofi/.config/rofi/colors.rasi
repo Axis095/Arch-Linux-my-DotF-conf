@@ -1,0 +1,6 @@
+* {
+    bg: rgba(11, 21, 26, 0.8);
+    fg: #d9e4eb;
+    accent: #71d2ff;
+    selected: rgba(0, 77, 102, 0.4);
+}

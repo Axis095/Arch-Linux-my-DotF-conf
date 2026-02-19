@@ -1,0 +1,50 @@
+{
+  "positionX": "right",
+  "positionY": "top",
+  "layer": "overlay",
+  "control-center-margin-top": 10,
+  "control-center-margin-right": 10,
+  "widgets": [
+    "title",
+    "buttons-grid",
+    "volume",
+    "mpris",
+    "dnd",
+    "notifications"
+  ],
+  "widget-config": {
+    "title": {
+      "text": "Central Control",
+      "clear-all-button": true,
+      "button-text": "Clear All"
+    },
+    "buttons-grid": {
+      "actions": [
+        {
+          "label": "",
+          "command": "wlogout"
+        },
+        {
+          "label": "",
+          "command": "blueman-manager"
+        },
+        {
+          "label": "󰖩",
+          "command": "nm-connection-editor"
+        },
+        {
+          "label": "󰝟",
+          "command": "pavucontrol"
+        }
+      ]
+    },
+    "volume": {
+      "label": "󰕾"
+    },
+    "mpris": {
+      "image-size": 96,
+      "image-radius": 12,
+      "ignore": ["firefox", "chromium"]
+    }
+  }
+}

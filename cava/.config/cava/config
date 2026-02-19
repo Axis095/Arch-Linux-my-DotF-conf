@@ -158,7 +158,7 @@
 # 'sdl' uses the Simple DirectMedia Layer to render in a graphical context.
 # 'sdl_glsl' uses SDL to create an OpenGL context. Write your own shaders or
 # use one of the predefined ones.
-; method = noncurses
+; method = ncurses
 
 # Orientation of the visualization. Can be 'bottom', 'top', 'left', 'right' or
 # 'horizontal'. Default is 'bottom'. 'left and 'right' are only supported on sdl
@@ -290,8 +290,8 @@
 ; integral = 77
 
 # Disables or enables the so-called "Monstercat smoothing" with or without "waves". Set to 0 to disable.
-; monstercat = 0
-; waves = 0
+; monstercat = 1
+; waves = 1
 
 # Set gravity percentage for "drop off". Higher values means bars will drop faster.
 # Accepts only non-negative values. 50 means half gravity, 200 means double. Set to 0 to disable "drop off".

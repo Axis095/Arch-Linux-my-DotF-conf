@@ -2,32 +2,99 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 30,
+    "height": 40,
+    "margin-top": 8,     // <--- Añade esto para bajarla del borde
+    "margin-left": 15,
+    "margin-right": 15,
+    "margin-bottom": 0,
     "spacing": 5,
     
-    // === Módulos ===
+    // === Módulos Reorganizados ===
     "modules-left": [
-	    "custom/arch-logo",
-        "hyprland/workspaces"
+        "custom/arch-logo",
+        "group/musica",     // Grupo colapsable para música
+        "group/hardware"    // Grupo colapsable para hardware
     ],
 
     "modules-center": [
-        "clock"
+        "clock",
+        "hyprland/workspaces"
     ],
 
     "modules-right": [
         "pulseaudio",
         "tray",
-        "cpu",
-        "memory",
-        "custom/wallpaper"
+        "custom/wallpaper",
+        "custom/power"
     ],
+    
+    // === CONFIGURACIÓN DE GRUPOS (El "Truco") ===
+
+    "group/hardware": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 500,
+            "transition-left-to-right": true
+        },
+        "modules": [
+            "cpu",          // Este módulo siempre se ve (es el activador)
+            "memory",
+            "custom/gpu",   // Estos aparecen al pasar el mouse
+            "temperature"
+        ]
+    },
+
+    "group/musica": {
+    "orientation": "horizontal",
+    "drawer": {
+        "transition-duration": 500,
+        "transition-left-to-right": true
+    },
+    "modules": [
+        "custom/music-icon",
+        "mpris",
+        "custom/prev",
+        "custom/play-pause",
+        "custom/next"
+        ]
+    },
+
+    "custom/prev": { "format": " 󰒮 ", "on-click": "playerctl previous" },
+    "custom/next": { "format": " 󰒭 ", "on-click": "playerctl next" },
+    "custom/play-pause": { "format": " 󰐊 ", "on-click": "playerctl play-pause" },
+
+    // === Configuración de Módulos (Ajustados) ===
+
+    "custom/music-icon": {
+        "format": "󰎆 ",
+        "tooltip": false
+    },
     
     // === Configuración de Módulos ===
     "clock": {
-        "format": "⏰ {:%H:%M:%S}",
-        "interval": 1,
-        "tooltip-format": "<big>{:%Y %B %d}</big>"
+    "format": "⏰ {:%H:%M:%S}",
+    "interval": 1,
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+        "mode": "month",
+        "mode-mon-col": 3,
+        "weeks-pos": "right",
+        "on-scroll": 1,
+        "format": {
+            "months": "<span color='#ffead3'><b>{}</b></span>",
+            "days": "<span color='#ecc6d9'><b>{}</b></span>",
+            "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+            "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+            "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+        }
+    },
+    "actions": {
+        "on-click-right": "mode",
+        "on-click-forward": "tz_up",
+        "on-click-backward": "tz_down",
+        "on-scroll-up": "shift_up",
+        "on-scroll-down": "shift_down"
+        }
     },
 
     "cpu": {
@@ -64,8 +131,48 @@
         "tooltip-format": "Cambiar fondo de pantalla"
     },
 
+        "custom/gpu": {
+        "exec": "nvidia-smi --query-gpu=temperature.gpu,utilization.gpu,memory.used --format=csv,noheader,nounits | awk -F', ' '{printf \"󰾲  %d°C | %d%% | %.1fGiB\", $1, $2, $3/1024}'",
+        "interval": 10,
+        "tooltip": false,
+        "format": "{}"
+    },
+
+        "temperature": {
+        "thermal-zone": 2, // Puede variar según tu PC (0, 1 o 2)
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input", // Ruta opcional específica
+        "critical-threshold": 80,
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": ["", "", ""],
+        "tooltip": false
+    },
+
+    "mpris": {
+        "format": "{player_icon} {title}",
+        "format-paused": "{status_icon} <i>{title}</i>",
+        // Eliminamos thumbnail de aquí para evitar el crash
+        "tooltip-format": "{player} ({status})\n{artist} - {album}", 
+        "player-icons": {
+            "default": "▶",
+            "spotify": "",
+            "firefox": ""
+        },
+        "status-icons": {
+            "paused": "⏸"
+        },
+        "max-length": 30
+    },
+
+    "custom/power": {
+    "format": "⏻ ",
+    "tooltip": false,
+    "on-click": "systemctl poweroff", // Requiere instalar 'wlogout'
+    "on-click-right": "reboot" // Clic derecho para reiniciar rápido a Windows
+    },
+
+
     "custom/arch-logo": {
-        "format": "    ", // Icono de Arch
+        "format": "    ", // Icono de Arch "format": "    "
         "tooltip": false,
         "on-click": "rofi -show drun" // que abra el menú al hacer clic
     }

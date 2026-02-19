@@ -1,98 +1,81 @@
+/* Configuración optimizada para un look minimalista */
+
 configuration {
-    /* Habilitamos los modos básicos y el buscador de archivos */
     modes: "drun,run,filebrowser,window";
-    
-    /* ESTO ES LO MÁS IMPORTANTE PARA LAS MINIATURAS */
     show-icons: true;
-    icon-theme: "Papirus"; // O el tema que tengas instalado
-    
-    /* Ajustes de visualización para Wayland */
-    terminal: "kitty"; // Cambia por tu terminal (alacritty, foot, etc)
+    icon-theme: "Papirus";
+    terminal: "kitty";
     drun-display-format: "{name}";
-    window-format: "{w} · {c} · {t}";
-    
-    /* Desactivar el historial si quieres que siempre aparezca limpio */
-    disable-history: false;
-    
-    timeout {
-        action: "kb-cancel";
-        delay:  0;
-    }
+    /* Añadimos una fuente global más equilibrada */
+    font: "JetBrainsMono Nerd Font 10";
 }
 
 @theme "/dev/null"
+@import "~/.config/rofi/colors.rasi"
 
 * {
-    bg:      #14141e66; 
-    accent:  #00FFFF;
-    purple:  #7A00FF;
-    fg:      #FFFFFF;
-    
     background-color: transparent;
-    text-color:       @fg;
+    text-color: @fg; /* Usamos el foreground de matugen */
 }
 
 window {
-    width:            50%; /* Un poco más ancho para que luzcan las miniaturas */
-    background-color: @bg;
-    border:           2px;
-    border-color:     @purple;
-    border-radius:    12px;
+    width:            600px;         /* Reducido de 800px a 600px */
+    background-color: @bg;           
+    border:           2px;           /* Borde más fino */
+    border-color:     @accent;       
+    border-radius:    15px;          /* Radio más sutil */
     location:         center;
     anchor:           center;
-    padding:          20px;
 }
 
 mainbox {
-    children: [ inputbar, listview ];
+    padding:    20px;
+    children:   [ inputbar, listview ];
 }
 
 inputbar {
-    children:         [ prompt, entry ];
-    background-color: #ffffff1a;
+    background-color: #ffffff05;    /* Más sutil aún */
+    border:           1px;
+    border-color:     @accent;
     border-radius:    8px;
-    padding:          10px;
+    padding:          8px 12px;
     margin:           0 0 15px 0;
+    children:         [ prompt, entry ];
 }
 
 prompt {
-    text-color:       @accent;
-    margin:           0 10px 0 0;
-}
-
-entry {
-    placeholder:       "Buscar...";
-    placeholder-color: #888888;
+    text-color: @accent;
+    margin: 0 10px 0 0;
 }
 
 listview {
-    lines:        6;
-    columns:      1;
-    fixed-height: false;
-    scrollbar:    false;
-    spacing:      10px; /* Más espacio entre elementos */
+    columns:       2;               /* 2 columnas es más balanceado que 3 */
+    lines:         6;               /* Más líneas pero iconos más pequeños */
+    fixed-columns: true;
+    scrollbar:     false;
+    spacing:       8px;
 }
 
 element {
-    padding:       10px;
-    border-radius: 8px;
-    orientation:   horizontal; /* Asegura que el icono y texto estén alineados */
+    padding:       8px;             /* Padding reducido */
+    border-radius: 10px;
+    orientation:   horizontal;      /* CAMBIO CLAVE: Icono al lado del texto */
+    spacing:       15px;            /* Espacio entre icono y texto */
 }
 
 element-icon {
-    size: 128px; /* TAMAÑO DE LA MINIATURA: Ajusta a tu gusto (ej. 64px o 128px) */
-    cursor: inherit;
+    size:             32px;         /* De 180px a 32px: un cambio radical */
+    vertical-align:   0.5;
 }
 
 element-text {
-    vertical-align: 0.5;
-    horizontal-align: 0.0;
-    cursor: inherit;
+    vertical-align:   0.5;
+    horizontal-align: 0.0;          /* Alineado a la izquierda */
 }
 
 element selected {
-    background-color: #00ffff4d;
-    text-color:       @accent;
-    border:           1px;
+    background-color: @selected;
+    text-color:       @fg;
+    border:           1px;          /* Borde de selección más fino */
     border-color:     @accent;
 }
